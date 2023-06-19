@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bookmedik-config
+data:
+  host_database: p1-mariadb
+  db_name: bookmedik
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb-config
+data:
+  MARIADB_DATABASE: bookmedik

@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bookmedik-ingress
+spec:
+  rules:
+  - host: bookmedik.davidrgfoss.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: bookmedik
+            port:
+              number: 8081

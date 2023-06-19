@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p1-mariadb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: p1-mariadb
+  template:
+    metadata:
+      labels:
+        app: p1-mariadb
+    spec:
+      containers:
+      - name: p1-mariadb
+        image: mariadb
+        ports:
+        - containerPort: 3306
+        envFrom:
+        - configMapRef:
+            name: mariadb-config
+        - secretRef:
+            name: mariadb-secret
+        volumeMounts:
+        - name: mariadb-data
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mariadb-data
+        persistentVolumeClaim:
+          claimName: mariadb-pvc
