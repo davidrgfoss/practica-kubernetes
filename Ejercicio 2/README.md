@@ -13,7 +13,9 @@ kind create cluster --name kubernetes-p2 --config kind.yaml
 * Ejecutamos los siguientes comandos para levantar toda la configuración que ya hemos utilizado en el apartado 1 y nos permitira usar la app bookmedik:
 
 ```
-# Aplicamos todos los ficheros del directorio actual, no hay problema con que un fichero dependa de otro. Kubernetes de forma automatica sabe gestionar el lanzamiento y esperar o reintentar en caso de que uno dependa de otro. Por ultimo en mi imagen usada tengo configurado un script de comprobación con mariadb.
+# Aplicamos todos los ficheros del directorio actual, no hay problema con que un fichero dependa de otro.
+# Kubernetes de forma automatica sabe gestionar el lanzamiento y esperar o reintentar en caso de que uno dependa de otro.
+# Por ultimo en mi imagen usada tengo configurado un script de comprobación con mariadb.
 kubectl apply -f .
 
 # Configuramos el controlador ingress-nginx que nos permitira acceder con una URL como hicimos con minikube
